@@ -48,7 +48,7 @@
             "@cs",
             "@tests"
         ],
-        "phpcs": "phpcs --standard=WordPressVIPMinimum",
-        "phpcbf": "phpcbf --standard=WordPressVIPMinimum"
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf"
     }
 }

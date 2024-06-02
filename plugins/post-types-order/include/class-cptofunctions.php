@@ -1,7 +1,7 @@
 <?php
 /**
  * Post Types Order Functions
- * 
+ *
  * @package post-types-order
  */
 
@@ -15,13 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CptoFunctions {
 
 
+
 	/**
 	 * Return the user level
-	 * 
+	 *
 	 * This is deprecated, will be removed in the next versions
-	 * 
+	 *
 	 * @param mixed $return_as_numeric return_as_numeric.
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function userdata_get_user_level( $return_as_numeric = false ) {
@@ -33,10 +34,10 @@ class CptoFunctions {
 				$user_level = $i;
 				if ( false === $return_as_numeric ) {
 					$user_level = 'level_' . $i;
-				}    
+				}
 				break;
-			}    
-		}        
+			}
+		}
 		return ( $user_level );
 	}
 
@@ -56,13 +57,13 @@ class CptoFunctions {
 			'use_query_ASC_DESC'               => '',
 			'capability'                       => 'manage_options',
 			'navigation_sort_apply'            => 1,
-	
+
 		);
 		$options = wp_parse_args( $options, $defaults );
 
 		$options = apply_filters( 'pto_get_options', $options );
 
-		return $options;            
+		return $options;
 	}
 
 
@@ -79,7 +80,7 @@ class CptoFunctions {
 			<h4>
 				<?php esc_html_e( 'Did you know there is available an Advanced version of this plug-in?', 'post-types-order' ); ?>
 				<a target="_blank" href="https://www.nsp-code.com/premium-plugins/wordpress-plugins/advanced-post-types-order/">
-					<?php _e( 'Read more', 'post-types-order' ); ?>
+					<?php esc_html_e( 'Read more', 'post-types-order' ); ?>
 				</a>
 			</h4>
 			<p>
@@ -97,18 +98,18 @@ class CptoFunctions {
 			<div class="clear"></div>
 		</div>
 
-		<?php   
+		<?php
 	}
 
 
 
 	/**
 	 * Get the post types
-	 * 
-	 * @param mixed $where where.
-	 * @param mixed $in_same_term in_same_term.
+	 *
+	 * @param mixed $where          where.
+	 * @param mixed $in_same_term   in_same_term.
 	 * @param mixed $excluded_terms excluded_terms.
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function cpto_get_previous_post_where( $where, $in_same_term, $excluded_terms ) {
@@ -120,7 +121,7 @@ class CptoFunctions {
 
 		// ?? WordPress does not pass through this varialbe, so we presume it's category..
 		$taxonomy = 'category';
-		if ( preg_match( '/ tt.taxonomy = \'([^\']+)\'/i', $where, $match ) ) { 
+		if ( preg_match( '/ tt.taxonomy = \'([^\']+)\'/i', $where, $match ) ) {
 			$taxonomy = $match[1];
 		}
 
@@ -172,7 +173,7 @@ class CptoFunctions {
 		if ( count( $results ) > 0 ) {
 			$where .= $wpdb->prepare( ' AND p.menu_order = %d', $current_menu_order );
 		} else {
-			$where = str_replace( "p.post_date < '" . $post->post_date . "'", "p.menu_order > '$current_menu_order'", $where );  
+			$where = str_replace( "p.post_date < '" . $post->post_date . "'", "p.menu_order > '$current_menu_order'", $where );
 		}
 
 		return $where;
@@ -180,9 +181,9 @@ class CptoFunctions {
 
 	/**
 	 * Get the previous post sort
-	 * 
+	 *
 	 * @param mixed $sort sort.
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function cpto_get_previous_post_sort( $sort ) {
@@ -195,11 +196,11 @@ class CptoFunctions {
 
 	/**
 	 * Get the next post where
-	 * 
-	 * @param mixed $where where.
-	 * @param mixed $in_same_term in_same_term.
+	 *
+	 * @param mixed $where          where.
+	 * @param mixed $in_same_term   in_same_term.
 	 * @param mixed $excluded_terms excluded_terms.
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function cpto_get_next_post_where( $where, $in_same_term, $excluded_terms ) {
@@ -210,7 +211,7 @@ class CptoFunctions {
 		}
 
 		$taxonomy = 'category';
-		if ( preg_match( '/ tt.taxonomy = \'([^\']+)\'/i', $where, $match ) ) { 
+		if ( preg_match( '/ tt.taxonomy = \'([^\']+)\'/i', $where, $match ) ) {
 			$taxonomy = $match[1];
 		}
 
@@ -256,14 +257,14 @@ class CptoFunctions {
 			"SELECT p.* FROM $wpdb->posts AS p $_join WHERE p.post_date > %s AND p.menu_order = %d AND p.post_type = %s AND p.post_status = 'publish' $_where", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Ignored due to $wpdb->prepare() usage.
 			$post->post_date,
 			$current_menu_order,
-			$post->post_type 
+			$post->post_type
 		);
 		$results = $wpdb->get_results( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.DirectQuery -- Ignored due to $wpdb->prepare() usage.
 
 		if ( count( $results ) > 0 ) {
 			$where .= $wpdb->prepare( ' AND p.menu_order = %d', $current_menu_order );
 		} else {
-			$where = str_replace( "p.post_date > '" . $post->post_date . "'", "p.menu_order < '$current_menu_order'", $where );  
+			$where = str_replace( "p.post_date > '" . $post->post_date . "'", "p.menu_order < '$current_menu_order'", $where );
 		}
 
 		return $where;
@@ -271,17 +272,17 @@ class CptoFunctions {
 
 	/**
 	 * Get the next post sort
-	 * 
+	 *
 	 * @param mixed $sort sort.
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function cpto_get_next_post_sort( $sort ) {
-		global $post, $wpdb; 
+		global $post, $wpdb;
 
 		$sort = 'ORDER BY p.menu_order DESC, p.post_date ASC LIMIT 1';
 
-		return $sort;    
+		return $sort;
 	}
 }
 

@@ -1,3 +1,4 @@
 composer.lock
 vendor/
 plugins/wp-dummy-content-generator/
+themes/

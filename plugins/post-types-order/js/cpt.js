@@ -8,13 +8,13 @@
  */
 
 var getUrlParameter = function getUrlParameter(sParam) {
-	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-		sURLVariables = sPageURL.split('&'),
+	var sPageURL      = decodeURIComponent( window.location.search.substring( 1 ) ),
+		sURLVariables = sPageURL.split( '&' ),
 		sParameterName,
 		i;
-	var URLLenght = sURLVariables.length;
+	var URLLenght     = sURLVariables.length;
 	for (i = 0; i < URLLenght; i++) {
-		sParameterName = sURLVariables[i].split('=');
+		sParameterName = sURLVariables[i].split( '=' );
 
 		if (sParameterName[0] === sParam) {
 			return sParameterName[1] === undefined ? true : sParameterName[1];
@@ -22,16 +22,16 @@ var getUrlParameter = function getUrlParameter(sParam) {
 	}
 };
 
-jQuery(document).ready(
+jQuery( document ).ready(
 	function () {
 
-		jQuery('table.wp-list-table #the-list').sortable(
+		jQuery( 'table.wp-list-table #the-list' ).sortable(
 			{
 
 				placeholder: {
 					element: function (currentItem) {
-						var cols = jQuery(currentItem).children('td:visible').length + 1;
-						return jQuery('<tr class="ui-sortable-placeholder"><td colspan="' + cols + '">&nbsp;</td></tr>')[0];
+						var cols = jQuery( currentItem ).children( 'td:visible' ).length + 1;
+						return jQuery( '<tr class="ui-sortable-placeholder"><td colspan="' + cols + '">&nbsp;</td></tr>' )[0];
 					},
 					update: function (container, p) {
 						return;
@@ -44,9 +44,9 @@ jQuery(document).ready(
 				'update': function (e, ui) {
 
 					var post_type = CPTO.post_type;
-					var order = jQuery('#the-list').sortable('serialize');
+					var order     = jQuery( '#the-list' ).sortable( 'serialize' );
 
-					var paged = getUrlParameter('paged');
+					var paged = getUrlParameter( 'paged' );
 					if (typeof paged === 'undefined') {
 						paged = 1;
 					}

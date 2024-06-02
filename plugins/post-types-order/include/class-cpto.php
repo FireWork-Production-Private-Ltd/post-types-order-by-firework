@@ -29,6 +29,13 @@ class CPTO {
 	 */
 	public $functions;
 
+	/**
+	 * Post Type
+	 *
+	 * @var mixed
+	 */
+	public $post_type;
+
 
 	/**
 	 * Constructor function.
@@ -38,7 +45,7 @@ class CPTO {
 		$this->functions = new CptoFunctions();
 
 		$is_configured = get_option( 'CPT_configured' );
-		if ( '' == $is_configured ) {
+		if ( '' === strval( $is_configured ) ) {
 			add_action( 'admin_notices', array( $this, 'admin_configure_notices' ) );
 		}
 
@@ -86,7 +93,7 @@ class CPTO {
 		// check the navigation_sort_apply option.
 		$options = $this->functions->get_options();
 
-		$navigation_sort_apply = ( '1' == $options['navigation_sort_apply'] ) ? true : false;
+		$navigation_sort_apply = ( '1' === strval( $options['navigation_sort_apply'] ) ) ? true : false;
 
 		// Deprecated, rely on pto/navigation_sort_apply.
 		$navigation_sort_apply = apply_filters( 'cpto_navigation_sort_apply', $navigation_sort_apply );
@@ -134,19 +141,19 @@ class CPTO {
 		}
 
 		// check for ignore_custom_sort.
-		if ( isset( $query->query_vars['ignore_custom_sort'] ) && true == $query->query_vars['ignore_custom_sort'] ) {
+		if ( isset( $query->query_vars['ignore_custom_sort'] ) && true === boolval( $query->query_vars['ignore_custom_sort'] ) ) {
 			return $query;
 		}
 
 		// ignore if  "nav_menu_item".
-		if ( isset( $query->query_vars ) && isset( $query->query_vars['post_type'] ) && 'nav_menu_item' == $query->query_vars['post_type'] ) {
+		if ( isset( $query->query_vars ) && isset( $query->query_vars['post_type'] ) && 'nav_menu_item' === strval( $query->query_vars['post_type'] ) ) {
 			return $query;
 		}
 
 		$options = $this->functions->get_options();
 
 		// if auto sort.
-		if ( '1' == $options['autosort'] ) {
+		if ( '1' === strval( $options['autosort'] ) ) {
 			// remove the supresed filters.
 			if ( isset( $query->query['suppress_filters'] ) ) {
 				$query->query['suppress_filters'] = false;
@@ -176,15 +183,15 @@ class CPTO {
 		$options = $this->functions->get_options();
 
 		// check for ignore_custom_sort.
-		if ( isset( $query->query_vars['ignore_custom_sort'] ) && true == $query->query_vars['ignore_custom_sort'] ) {
+		if ( isset( $query->query_vars['ignore_custom_sort'] ) && true === boolval( $query->query_vars['ignore_custom_sort'] ) ) {
 			return $order_by;
 		}
 
 		// ignore the bbpress.
-		if ( isset( $query->query_vars['post_type'] ) && ( ( is_array( $query->query_vars['post_type'] ) && in_array( 'reply', $query->query_vars['post_type'], true ) ) || ( 'reply' == $query->query_vars['post_type'] ) ) ) {
+		if ( isset( $query->query_vars['post_type'] ) && ( ( is_array( $query->query_vars['post_type'] ) && in_array( 'reply', $query->query_vars['post_type'], true ) ) || ( 'reply' === strval( $query->query_vars['post_type'] ) ) ) ) {
 			return $order_by;
 		}
-		if ( isset( $query->query_vars['post_type'] ) && ( ( is_array( $query->query_vars['post_type'] ) && in_array( 'topic', $query->query_vars['post_type'], true ) ) || ( 'topic' == $query->query_vars['post_type'] ) ) ) {
+		if ( isset( $query->query_vars['post_type'] ) && ( ( is_array( $query->query_vars['post_type'] ) && in_array( 'topic', $query->query_vars['post_type'], true ) ) || ( 'topic' === strval( $query->query_vars['post_type'] ) ) ) ) {
 			return $order_by;
 		}
 
@@ -194,7 +201,7 @@ class CPTO {
 		}
 
 		// Avada orderby.
-		if ( isset( $_GET['product_orderby'] ) && 'default' != $_GET['product_orderby'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['product_orderby'] ) && 'default' !== strval( sanitize_text_field( wp_unslash( $_GET['product_orderby'] ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return $order_by;
 		}
 
@@ -202,12 +209,12 @@ class CPTO {
 		 * Deprecated filter
 		 * do not rely on this anymore
 		 */
-		if ( false == apply_filters( 'pto_posts_orderby', $order_by, $query ) ) {
+		if ( false === boolval( apply_filters( 'pto_posts_orderby', $order_by, $query ) ) ) {
 			return $order_by;
 		}
 
 		$ignore = apply_filters( 'pto_posts_orderby_ignore', false, $order_by, $query );
-		if ( true == $ignore ) {
+		if ( true === boolval( $ignore ) ) {
 			return $order_by;
 		}
 
@@ -216,16 +223,16 @@ class CPTO {
 			return( $order_by );
 		}
 
-		if ( ( is_admin() && ! wp_doing_ajax() ) || ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'query-attachments' == $_REQUEST['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ( is_admin() && ! wp_doing_ajax() ) || ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'query-attachments' === strval( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-			if ( '1' == $options['adminsort'] || ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'query-attachments' == $_REQUEST['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( '1' === strval( $options['adminsort'] ) || ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'query-attachments' === strval( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 				global $post;
 
 				$order = apply_filters( 'pto_posts_order', '', $query );
 
 				// temporary ignore ACF group and admin ajax calls, should be fixed within ACF plugin sometime later.
-				if ( ( is_object( $post ) && ( 'acf-field-group' == $post->post_type ) ) || ( ( defined( 'DOING_AJAX' ) && ( isset( $_REQUEST['action'] ) && 0 == strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'acf/' ) ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				if ( ( is_object( $post ) && ( 'acf-field-group' === strval( $post->post_type ) ) ) || ( ( defined( 'DOING_AJAX' ) && ( isset( $_REQUEST['action'] ) && 0 === (int) strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'acf/' ) ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					return $order_by;
 				}
 
@@ -237,14 +244,14 @@ class CPTO {
 			}
 		} else {
 			$order = '';
-			if ( '1' == $options['use_query_ASC_DESC'] ) {
+			if ( '1' === strval( $options['use_query_ASC_DESC'] ) ) {
 				$order = isset( $query->query_vars['order'] ) ? ' ' . $query->query_vars['order'] : '';
 			}
 
 			$order = apply_filters( 'pto_posts_order', $order, $query );
 
-			if ( '1' == $options['autosort'] ) {
-				if ( '' == trim( $order_by ) ) {
+			if ( '1' === strval( $options['autosort'] ) ) {
+				if ( '' === strval( trim( $order_by ) ) ) {
 					$order_by = "{$wpdb->posts}.menu_order " . $order;
 				} else {
 					$order_by = "{$wpdb->posts}.menu_order" . $order . ', ' . $order_by;
@@ -319,7 +326,7 @@ class CPTO {
 		$options = $this->functions->get_options();
 
 		// if adminsort turned off no need to continue.
-		if ( '1' != $options['adminsort'] ) {
+		if ( '1' !== strval( $options['adminsort'] ) ) {
 			return;
 		}
 
@@ -334,7 +341,7 @@ class CPTO {
 			return;
 		}
 
-		if ( empty( $options['allow_reorder_default_interfaces'][ $screen->post_type ] ) || ( isset( $options['allow_reorder_default_interfaces'][ $screen->post_type ] ) && 'yes' != $options['allow_reorder_default_interfaces'][ $screen->post_type ] ) ) {
+		if ( empty( $options['allow_reorder_default_interfaces'][ $screen->post_type ] ) || ( isset( $options['allow_reorder_default_interfaces'][ $screen->post_type ] ) && 'yes' !== strval( $options['allow_reorder_default_interfaces'][ $screen->post_type ] ) ) ) {
 			return;
 		}
 
@@ -348,7 +355,7 @@ class CPTO {
 		}
 
 		// return if use orderby columns.
-		if ( isset( $_GET['orderby'] ) && 'menu_order' != $_GET['orderby'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['orderby'] ) && 'menu_order' !== strval( sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return false;
 		}
 
@@ -390,9 +397,9 @@ class CPTO {
 	 * @return void
 	 */
 	public function admin_init() {
-		if ( isset( $_GET['page'] ) && 'order-post-types-' == substr( sanitize_text_field( wp_unslash( $_GET['page'] ) ), 0, 17 ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['page'] ) && 'order-post-types-' === strval( substr( sanitize_text_field( wp_unslash( $_GET['page'] ) ), 0, 17 ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$this->current_post_type = get_post_type_object( str_replace( 'order-post-types-', '', sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			if ( null == $this->current_post_type ) {
+			if ( null === $this->current_post_type ) {
 				wp_die( 'Invalid post type' );
 			}
 		}
@@ -424,7 +431,7 @@ class CPTO {
 
 		if ( is_array( $data ) ) {
 			foreach ( $data as $key => $values ) {
-				if ( 'item' == $key ) {
+				if ( 'item' === strval( $key ) ) {
 					foreach ( $values as $position => $id ) {
 
 						// sanitize.
@@ -477,7 +484,7 @@ class CPTO {
 
 		set_time_limit( 600 );
 
-		global $wpdb, $userdata, $post_type;
+		global $wpdb, $userdata;
 
 		$post_type = isset( $_POST['post_type'] ) ? preg_replace( '/[^a-zA-Z0-9_\-]/', '', sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified.
 		$paged     = isset( $_POST['paged'] ) ? filter_var( sanitize_text_field( wp_unslash( $_POST['paged'] ) ), FILTER_SANITIZE_NUMBER_INT ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified.
@@ -513,7 +520,7 @@ class CPTO {
 			$objects_ids[] = (int) $result->ID;
 		}
 
-		if ( 'attachment' == $post_type ) {
+		if ( 'attachment' === strval( $post_type ) ) {
 			$objects_per_page = get_user_meta( $userdata->ID, 'upload_per_page', true );
 		} else {
 			$objects_per_page = get_user_meta( $userdata->ID, 'edit_' . $post_type . '_per_page', true );
@@ -579,12 +586,12 @@ class CPTO {
 		}
 
 		foreach ( $post_types as $post_type_name ) {
-			if ( 'page' == $post_type_name ) {
+			if ( 'page' === strval( $post_type_name ) ) {
 				continue;
 			}
 
 			// ignore bbpress.
-			if ( 'reply' == $post_type_name || 'topic' == $post_type_name ) {
+			if ( 'reply' === strval( $post_type_name ) || 'topic' === strval( $post_type_name ) ) {
 				continue;
 			}
 
@@ -593,19 +600,19 @@ class CPTO {
 			}
 
 			$post_type_data = get_post_type_object( $post_type_name );
-			if ( false == $post_type_data->show_ui ) {
+			if ( false === boolval( $post_type_data->show_ui ) ) {
 				continue;
 			}
 
-			if ( isset( $options['show_reorder_interfaces'][ $post_type_name ] ) && 'show' != $options['show_reorder_interfaces'][ $post_type_name ] ) {
+			if ( isset( $options['show_reorder_interfaces'][ $post_type_name ] ) && 'show' !== strval( $options['show_reorder_interfaces'][ $post_type_name ] ) ) {
 				continue;
 			}
 
 			$required_capability = apply_filters( 'pto_edit_capability', $capability, $post_type_name );
 
-			if ( 'post' == $post_type_name ) {
+			if ( 'post' === strval( $post_type_name ) ) {
 				$hook_id = add_submenu_page( 'edit.php', __( 'Re-Order', 'post-types-order' ), __( 'Re-Order', 'post-types-order' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
-			} elseif ( 'attachment' == $post_type_name ) {
+			} elseif ( 'attachment' === strval( $post_type_name ) ) {
 				$hook_id = add_submenu_page( 'upload.php', __( 'Re-Order', 'post-types-order' ), __( 'Re-Order', 'post-types-order' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
 			} else {
 				$hook_id = add_submenu_page( 'edit.php?post_type=' . $post_type_name, __( 'Re-Order', 'post-types-order' ), __( 'Re-Order', 'post-types-order' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
@@ -623,7 +630,7 @@ class CPTO {
 	 */
 	public function admin_reorder_print_styles() {
 
-		if ( null != $this->current_post_type ) {
+		if ( null !== $this->current_post_type ) {
 			wp_enqueue_script( 'jQuery' );
 			wp_enqueue_script( 'jquery-ui-sortable' );
 		}

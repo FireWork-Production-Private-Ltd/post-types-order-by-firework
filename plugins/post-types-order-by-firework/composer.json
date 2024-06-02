@@ -8,6 +8,13 @@
                           "name": "Nsp Code",
                           "email": "contact@nsp-code.com",
                           "homepage": "http://www.nsp-code.com/"
+                        },{
+                            "name": "FireWork Production Private Ltd.",
+                            "homepage": "https://github.com/FireWork-Production-Private-Ltd"
+                        },{
+                            "name": "up1512001",
+                            "email": "up1512001@gmail.com",
+                            "homepage": "https://github.com/up1512001"
                         }
                       ],
     "type"          : "wordpress-plugin",

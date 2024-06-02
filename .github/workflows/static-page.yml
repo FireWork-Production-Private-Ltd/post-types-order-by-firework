@@ -21,10 +21,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y pandoc
 
-    - name: Convert README.md to HTML
+    - name: Convert readme.md to HTML
       run: |
         mkdir -p output
-        pandoc README.md -f markdown -t html -s -o output/index.html
+        pandoc readme.md -f markdown -t html -s -o output/index.html
 
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push'

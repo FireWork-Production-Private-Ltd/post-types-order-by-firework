@@ -22,7 +22,7 @@ This plugin is an enhanced version of the original plugin created by `nsp code`,
 
 ## Installation
 
-1. **Upload the plugin files** to the `/wp-content/plugins/post-types-order` directory, or install the plugin through the WordPress plugins screen directly.
+1. **Upload the plugin files** to the `/wp-content/plugins/post-types-order-by-firework` directory, or install the plugin through the WordPress plugins screen directly.
 2. **Activate the plugin** through the 'Plugins' screen in WordPress.
 3. **Navigate to the plugin settings** from the WordPress dashboard to configure and start sorting your post types.
 

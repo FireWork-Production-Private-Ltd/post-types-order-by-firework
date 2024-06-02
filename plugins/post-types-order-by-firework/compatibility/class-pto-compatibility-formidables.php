@@ -3,7 +3,7 @@
  * Compatibility     : Formidable Forms
  * Introduced at     :  6.8.2
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

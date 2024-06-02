@@ -2,7 +2,7 @@
 /**
  * Post Types Order Walker
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

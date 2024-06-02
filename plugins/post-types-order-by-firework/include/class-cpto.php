@@ -2,7 +2,7 @@
 /**
  * Post Types Order
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -64,7 +64,7 @@ class CPTO {
 	 */
 	public function init() {
 
-		include_once CPTPATH . '/include/class-post-types-order-walker.php';
+		include_once CPTPATH . '/include/class-post-types-order-by-firework-walker.php';
 
 		add_action( 'admin_init', array( &$this, 'admin_init' ), 10 );
 		add_action( 'admin_menu', array( &$this, 'add_menu' ) );
@@ -277,11 +277,11 @@ class CPTO {
 		?>
 		<div class="error fade">
 			<p><strong>
-					<?php esc_html_e( 'Post Types Order must be configured. Please go to', 'post-types-order' ); ?> <a
+					<?php esc_html_e( 'Post Types Order must be configured. Please go to', 'post-types-order-by-firework' ); ?> <a
 						href="<?php echo esc_url( get_admin_url() ); ?>options-general.php?page=cpto-options">
-						<?php esc_html_e( 'Settings Page', 'post-types-order' ); ?>
+						<?php esc_html_e( 'Settings Page', 'post-types-order-by-firework' ); ?>
 					</a>
-					<?php esc_html_e( 'make the configuration and save', 'post-types-order' ); ?>
+					<?php esc_html_e( 'make the configuration and save', 'post-types-order-by-firework' ); ?>
 				</strong></p>
 		</div>
 		<?php
@@ -611,11 +611,11 @@ class CPTO {
 			$required_capability = apply_filters( 'pto_edit_capability', $capability, $post_type_name );
 
 			if ( 'post' === strval( $post_type_name ) ) {
-				$hook_id = add_submenu_page( 'edit.php', __( 'Re-Order', 'post-types-order' ), __( 'Re-Order', 'post-types-order' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
+				$hook_id = add_submenu_page( 'edit.php', __( 'Re-Order', 'post-types-order-by-firework' ), __( 'Re-Order', 'post-types-order-by-firework' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
 			} elseif ( 'attachment' === strval( $post_type_name ) ) {
-				$hook_id = add_submenu_page( 'upload.php', __( 'Re-Order', 'post-types-order' ), __( 'Re-Order', 'post-types-order' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
+				$hook_id = add_submenu_page( 'upload.php', __( 'Re-Order', 'post-types-order-by-firework' ), __( 'Re-Order', 'post-types-order-by-firework' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
 			} else {
-				$hook_id = add_submenu_page( 'edit.php?post_type=' . $post_type_name, __( 'Re-Order', 'post-types-order' ), __( 'Re-Order', 'post-types-order' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
+				$hook_id = add_submenu_page( 'edit.php?post_type=' . $post_type_name, __( 'Re-Order', 'post-types-order-by-firework' ), __( 'Re-Order', 'post-types-order-by-firework' ), $required_capability, 'order-post-types-' . $post_type_name, array( &$this, 'sort_page' ) );
 			}
 
 			add_action( 'admin_print_styles-' . $hook_id, array( $this, 'admin_reorder_print_styles' ) );
@@ -650,7 +650,7 @@ class CPTO {
 		<div id="cpto" class="wrap">
 			<div class="icon32" id="icon-edit"><br></div>
 			<h2>
-				<?php echo esc_html( $this->current_post_type->labels->singular_name . ' -  ' . esc_html__( 'Re-Order', 'post-types-order' ) ); ?>
+				<?php echo esc_html( $this->current_post_type->labels->singular_name . ' -  ' . esc_html__( 'Re-Order', 'post-types-order-by-firework' ) ); ?>
 			</h2>
 
 			<?php $this->functions->cpt_info_box(); ?>
@@ -660,7 +660,7 @@ class CPTO {
 			<noscript>
 				<div class="error message">
 					<p>
-						<?php esc_html_e( 'This plugin can\'t work without javascript, because it\'s use drag and drop and AJAX.', 'post-types-order' ); ?>
+						<?php esc_html_e( 'This plugin can\'t work without javascript, because it\'s use drag and drop and AJAX.', 'post-types-order-by-firework' ); ?>
 					</p>
 				</div>
 			</noscript>
@@ -675,7 +675,7 @@ class CPTO {
 
 			<p class="submit">
 				<a href="javascript: void(0)" id="save-order" class="button-primary">
-					<?php esc_html_e( 'Update', 'post-types-order' ); ?>
+					<?php esc_html_e( 'Update', 'post-types-order-by-firework' ); ?>
 				</a>
 			</p>
 

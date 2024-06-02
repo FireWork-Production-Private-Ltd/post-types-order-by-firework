@@ -3,7 +3,7 @@
  * Compatibility     : LiteSpeed Cache
  * Introduced at     :
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

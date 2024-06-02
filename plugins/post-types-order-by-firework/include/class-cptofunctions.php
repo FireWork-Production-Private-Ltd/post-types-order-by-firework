@@ -2,7 +2,7 @@
 /**
  * Post Types Order Functions
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -74,25 +74,25 @@ class CptoFunctions {
 		?>
 		<div id="cpt_info_box">
 			<p>
-				<?php esc_html_e( 'Did you find this plugin useful? Please support our work by purchasing the advanced version or write an article about this plugin in your blog with a link to our site', 'post-types-order' ); ?>
+				<?php esc_html_e( 'Did you find this plugin useful? Please support our work by purchasing the advanced version or write an article about this plugin in your blog with a link to our site', 'post-types-order-by-firework' ); ?>
 				<a href="https://www.nsp-code.com/" target="_blank"><strong>https://www.nsp-code.com/</strong></a>.
 			</p>
 			<h4>
-				<?php esc_html_e( 'Did you know there is available an Advanced version of this plug-in?', 'post-types-order' ); ?>
-				<a target="_blank" href="https://www.nsp-code.com/premium-plugins/wordpress-plugins/advanced-post-types-order/">
-					<?php esc_html_e( 'Read more', 'post-types-order' ); ?>
+				<?php esc_html_e( 'Did you know there is available an Advanced version of this plug-in?', 'post-types-order-by-firework' ); ?>
+				<a target="_blank" href="https://www.nsp-code.com/premium-plugins/wordpress-plugins/advanced-post-types-order-by-firework/">
+					<?php esc_html_e( 'Read more', 'post-types-order-by-firework' ); ?>
 				</a>
 			</h4>
 			<p>
-				<?php esc_html_e( 'Check our', 'post-types-order' ); ?> <a target="_blank"
+				<?php esc_html_e( 'Check our', 'post-types-order-by-firework' ); ?> <a target="_blank"
 					href="https://wordpress.org/plugins/taxonomy-terms-order/">Category Order - Taxonomy Terms Order</a>
-				<?php esc_html_e( 'plugin which allow to custom sort categories and custom taxonomies terms', 'post-types-order' ); ?>
+				<?php esc_html_e( 'plugin which allow to custom sort categories and custom taxonomies terms', 'post-types-order-by-firework' ); ?>
 			</p>
 			<p><span style="color:#CC0000" class="dashicons dashicons-megaphone" alt="f488">&nbsp;</span>
-				<?php esc_html_e( 'Check out', 'post-types-order' ); ?> <a
+				<?php esc_html_e( 'Check out', 'post-types-order-by-firework' ); ?> <a
 					href="https://wordpress.org/plugins/wp-hide-security-enhancer/" target="_blank"><b>WP Hide & Security
 						Enhancer</b></a>
-				<?php esc_html_e( 'an extra layer of security for your site. The easy way to completely hide your WordPress core files, themes and plugins', 'post-types-order' ); ?>.
+				<?php esc_html_e( 'an extra layer of security for your site. The easy way to completely hide your WordPress core files, themes and plugins', 'post-types-order-by-firework' ); ?>.
 			</p>
 
 			<div class="clear"></div>
@@ -136,7 +136,7 @@ class CptoFunctions {
 				// back-compat, $excluded_terms used to be $excluded_terms with IDs separated by " and ".
 				if ( false !== strpos( $excluded_terms, ' and ' ) ) {
 					/* translators: %s: 'and' */
-					_deprecated_argument( __FUNCTION__, '3.3', sprintf( esc_html__( 'Use commas instead of %s to separate excluded terms.', 'post-types-order' ), "'and'" ) );
+					_deprecated_argument( __FUNCTION__, '3.3', sprintf( esc_html__( 'Use commas instead of %s to separate excluded terms.', 'post-types-order-by-firework' ), "'and'" ) );
 					$excluded_terms = explode( ' and ', $excluded_terms );
 				} else {
 					$excluded_terms = explode( ',', $excluded_terms );
@@ -226,7 +226,7 @@ class CptoFunctions {
 				// back-compat, $excluded_terms used to be $excluded_terms with IDs separated by " and ".
 				if ( false !== strpos( $excluded_terms, ' and ' ) ) {
 					/* translators: %s: 'and' */
-					_deprecated_argument( __FUNCTION__, '3.3', sprintf( esc_html__( 'Use commas instead of %s to separate excluded terms.', 'post-types-order' ), "'and'" ) );
+					_deprecated_argument( __FUNCTION__, '3.3', sprintf( esc_html__( 'Use commas instead of %s to separate excluded terms.', 'post-types-order-by-firework' ), "'and'" ) );
 					$excluded_terms = explode( ' and ', $excluded_terms );
 				} else {
 					$excluded_terms = explode( ',', $excluded_terms );

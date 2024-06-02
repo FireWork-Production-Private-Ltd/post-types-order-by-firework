@@ -2,7 +2,7 @@
 /**
  * Compatibility class for Post Types Order
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

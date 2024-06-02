@@ -1,5 +1,5 @@
 {
-    "name"          : "nsp-code/post-types-order",
+    "name"          : "firework/post-types-order-by-firework",
     "description"   : "Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability",
     "keywords"      : ["post order" , "posts order", "sort", "post sort", "posts sort", "post type order", "custom order", "admin posts order"],
     "homepage"      : "http://www.nsp-code.com/",
@@ -8,6 +8,13 @@
                           "name": "Nsp Code",
                           "email": "contact@nsp-code.com",
                           "homepage": "http://www.nsp-code.com/"
+                        },{
+                            "name": "FireWork Production Private Ltd.",
+                            "homepage": "https://github.com/FireWork-Production-Private-Ltd"
+                        },{
+                            "name": "up1512001",
+                            "email": "up1512001@gmail.com",
+                            "homepage": "https://github.com/up1512001"
                         }
                       ],
     "type"          : "wordpress-plugin",

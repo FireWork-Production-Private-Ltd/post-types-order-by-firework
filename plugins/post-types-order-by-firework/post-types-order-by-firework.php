@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name: Post Types Order
- * Plugin URI: https://github.com/FireWork-Production-Private-Ltd/post-types-order
+ * Plugin Name: Post Types Order by FireWork
+ * Plugin URI: https://github.com/FireWork-Production-Private-Ltd/post-types-order-by-firework
  * Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
  * Author: FireWork Production Private Limited
  * Author URI: https://github.com/FireWork-Production-Private-Ltd
  * Version: 1.0.0
- * Text Domain: post-types-order
+ * Text Domain: post-types-order-by-firework-by-firework
  * Domain Path: /languages/
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 define( 'CPTPATH', plugin_dir_path( __FILE__ ) );
@@ -39,7 +39,7 @@ add_action( 'plugins_loaded', 'cpto_load_textdomain' );
  * @return void
  */
 function cpto_load_textdomain() {
-	load_plugin_textdomain( 'post-types-order', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'post-types-order-by-firework', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
 

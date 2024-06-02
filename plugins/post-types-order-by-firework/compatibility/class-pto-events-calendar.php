@@ -1,9 +1,9 @@
 <?php
 /**
- * Compatibility     : Endfold
- * Introduced at     : 5.6.2
+ * Compatibility     : Events Calendar
+ * Introduced at     :
  *
- * @package post-types-order
+ * @package post-types-order-by-firework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * PTO_Enfold class.
+ * PTO_Events_calendar class.
  */
-class PTO_Enfold {
+class PTO_Events_Calendar {
 
 
 
@@ -24,6 +24,7 @@ class PTO_Enfold {
 
 		add_filter( 'pto/posts_orderby/ignore', array( $this, 'ignore_post_types_order_sort' ), 10, 3 );
 	}
+
 
 	/**
 	 * Check if the plugin is active.
@@ -41,7 +42,7 @@ class PTO_Enfold {
 				$query_post_types[] = $_post_type;
 			}
 
-			if ( in_array( 'avia_framework_post', $query_post_types, true ) ) {
+			if ( in_array( 'tribe_events', $query_post_types, true ) ) {
 				$ignore = true;
 			}
 		}
@@ -50,4 +51,4 @@ class PTO_Enfold {
 	}
 }
 
-new PTO_Enfold();
+new PTO_Events_Calendar();

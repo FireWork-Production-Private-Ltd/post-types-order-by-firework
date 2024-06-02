@@ -3,10 +3,10 @@ name: Deploy README to GitHub Pages
 on:
   push:
     branches:
-      - main 
+      - main  # Change this to your default branch if it's not `main`
   pull_request:
     branches:
-      - main
+      - main  # Change this to your default branch if it's not `main`
 
 jobs:
   deploy:
@@ -16,17 +16,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
+    - name: Install pandoc
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc
 
     - name: Convert README.md to HTML
       run: |
-        mkdir output
+        mkdir -p output
         pandoc README.md -f markdown -t html -s -o output/index.html
 
     - name: Deploy to GitHub Pages
+      if: github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,6 +1,6 @@
 <?php
 /**
- * Post Types Order
+ * Post Types Order by FireWork
  *
  * @package post-types-order-by-firework
  */

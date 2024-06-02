@@ -47,9 +47,9 @@ Yes, the plugin has been modified to remove all PHPCS warnings and issues, makin
 ## Screenshots
 
 1. **Drag and Drop Interface:** Easily reorder posts and custom post types using a drag and drop interface.
-   ![Drag and Drop Interface](screenshot-1.png)
+   ![Drag and Drop Interface](./plugins/post-types-order-by-firework/screenshot-1.png)
 2. **Settings Page:** Configure the plugin settings to select which post types you want to sort.
-   ![Settings Page](screenshot-2.png)
+   ![Settings Page](./plugins/post-types-order-by-firework/screenshot-2.png)
 
 ## Changelog
 

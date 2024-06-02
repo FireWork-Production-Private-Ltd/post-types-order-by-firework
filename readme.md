@@ -1,6 +1,6 @@
 # Post Types Order by FireWork
 
-**Contributors:** nsp-code, fireworkproductionprivateltd, @up1512001
+**Contributors:** nsp-code, fireworkproductionprivateltd, up1512001
 **Donate link:** [Donate](http://www.nsp-code.com/donate.php)  
 **Tags:** post order, posts order, post sort, posts sort, post types order  
 **Requires at least:** 2.8  

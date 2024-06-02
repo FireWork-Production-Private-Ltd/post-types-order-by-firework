@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<ruleset name="VIP-Go-Skeleton">
+	<description>WordPress VIP Go Coding Standards</description>
+
+	<rule ref="WordPress-Core">
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+	</rule>
+
+	<rule ref="WordPress-VIP-Go" />
+
+	<rule ref="WordPressVIPMinimum" />
+
+	<rule ref="WordPress-Docs" />
+
+	<rule ref="PHPCompatibility"/>
+
+	<config name="testVersion" value="7.4-"/>
+
+	<arg name="extensions" value="php"/>
+	<arg value="s"/>
+
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>.github/</exclude-pattern>
+
+	<exclude-pattern>plugins/index.php</exclude-pattern>
+	<exclude-pattern>plugins/hello.php</exclude-pattern>
+	<exclude-pattern>plugins/akismet/</exclude-pattern>
+	<exclude-pattern>plugins/amp/</exclude-pattern>
+	<exclude-pattern>plugins/atomic-blocks/</exclude-pattern>
+	<exclude-pattern>plugins/aws-ses-wp-mail/</exclude-pattern>
+	<exclude-pattern>plugins/broken-link-checker/</exclude-pattern>
+	<exclude-pattern>plugins/classic-editor/</exclude-pattern>
+	<exclude-pattern>plugins/cloudflare/</exclude-pattern>
+	<exclude-pattern>plugins/compare/</exclude-pattern>
+	<exclude-pattern>plugins/disable-emojis/</exclude-pattern>
+	<exclude-pattern>plugins/exploit-scanner/</exclude-pattern>
+	<exclude-pattern>plugins/ga-ecommerce/</exclude-pattern>
+	<exclude-pattern>plugins/google-analytics-premium/</exclude-pattern>
+	<exclude-pattern>plugins/google-tag-manager/</exclude-pattern>
+	<exclude-pattern>plugins/gravityforms/</exclude-pattern>
+	<exclude-pattern>plugins/gravityformsactivecampaign/</exclude-pattern>
+	<exclude-pattern>plugins/gravityformsgutenberg/</exclude-pattern>
+	<exclude-pattern>plugins/gravityformsmailchimp/</exclude-pattern>
+	<exclude-pattern>plugins/gravityformswebhooks/</exclude-pattern>
+	<exclude-pattern>plugins/gutenberg-fields-middleware/</exclude-pattern>
+	<exclude-pattern>plugins/gutenberg-ramp/</exclude-pattern>
+	<exclude-pattern>plugins/gutenberg-supplements/</exclude-pattern>
+	<exclude-pattern>plugins/insert-headers-and-footers/</exclude-pattern>
+	<exclude-pattern>plugins/jetpack/</exclude-pattern>
+	<exclude-pattern>plugins/monsterinsights-dimensions/</exclude-pattern>
+	<exclude-pattern>plugins/monsterinsights-forms/</exclude-pattern>
+	<exclude-pattern>plugins/monsterinsights-performance/</exclude-pattern>
+	<exclude-pattern>plugins/nginx-helper/</exclude-pattern>
+	<exclude-pattern>plugins/rt-wp-cli-media-cleanup/</exclude-pattern>
+	<exclude-pattern>plugins/safe-redirect-manager/</exclude-pattern>
+	<exclude-pattern>plugins/stream/</exclude-pattern>
+	<exclude-pattern>plugins/sucuri-scanner/</exclude-pattern>
+	<exclude-pattern>plugins/woocommerce-to-easydigitaldownloads/</exclude-pattern>
+	<exclude-pattern>plugins/wordpress-seo/</exclude-pattern>
+	<exclude-pattern>plugins/wp-document-revisions/</exclude-pattern>
+	<exclude-pattern>plugins/wp-document-revisions-extend/</exclude-pattern>
+	<exclude-pattern>plugins/wp-redis/</exclude-pattern>
+	<exclude-pattern>plugins/wp-retina-2x/</exclude-pattern>
+	<exclude-pattern>plugins/wp-rollback/</exclude-pattern>
+	<exclude-pattern>plugins/fieldmanager/</exclude-pattern>
+	<exclude-pattern>plugins/gutenberg/</exclude-pattern>
+	<exclude-pattern>plugins/wp-google-login/</exclude-pattern>
+	<exclude-pattern>plugins/two-factor/</exclude-pattern>
+	<exclude-pattern>plugins/list-pages-shortcode/</exclude-pattern>
+	<exclude-pattern>plugins/wp-web-vitals/</exclude-pattern>
+
+	<exclude-pattern>themes/twentynineteen</exclude-pattern>
+
+</ruleset>

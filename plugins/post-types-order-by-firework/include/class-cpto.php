@@ -64,7 +64,7 @@ class CPTO {
 	 */
 	public function init() {
 
-		include_once CPTPATH . '/include/class-post-types-order-by-firework-walker.php';
+		include_once CPTPATH . '/include/class-post-types-order-walker.php';
 
 		add_action( 'admin_init', array( &$this, 'admin_init' ), 10 );
 		add_action( 'admin_menu', array( &$this, 'add_menu' ) );

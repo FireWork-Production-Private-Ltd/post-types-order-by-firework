@@ -318,7 +318,7 @@ class CPTO {
 	/**
 	 * Load archive drag&drop sorting dependencies
 	 *
-	 * Since version 1.8.8
+	 * Since version 1.0.0
 	 *
 	 * @return void
 	 */

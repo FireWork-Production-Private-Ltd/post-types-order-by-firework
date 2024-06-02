@@ -6,6 +6,7 @@
 **Requires at least:** 2.8  
 **Tested up to:** 6.5  
 **Stable tag:** 1.0.0  
+**ZIP Plugin File:** [Plugin ZIP](https://github.com/FireWork-Production-Private-Ltd/post-types-order/blob/main/post-types-order-by-firework.zip)
 
 ## Description
 

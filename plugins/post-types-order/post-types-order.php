@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Post Types Order
+ * Plugin Name: Post Types Order by FireWork
  * Plugin URI: https://github.com/FireWork-Production-Private-Ltd/post-types-order
  * Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
  * Author: FireWork Production Private Limited

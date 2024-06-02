@@ -477,7 +477,7 @@ class CPTO {
 
 		set_time_limit( 600 );
 
-		global $wpdb, $userdata;
+		global $wpdb, $userdata, $post_type;
 
 		$post_type = isset( $_POST['post_type'] ) ? preg_replace( '/[^a-zA-Z0-9_\-]/', '', sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified.
 		$paged     = isset( $_POST['paged'] ) ? filter_var( sanitize_text_field( wp_unslash( $_POST['paged'] ) ), FILTER_SANITIZE_NUMBER_INT ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified.

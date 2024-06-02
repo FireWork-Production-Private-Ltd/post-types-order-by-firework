@@ -735,7 +735,7 @@ class CPTO {
 		$r['hierarchical'] = 0;
 		$args              = array(
 			'sort_column'    => 'menu_order',
-			'post_type'      => $post_type,
+			'post_type'      => $post_type, // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- post type is defined in the parent function.
 			'posts_per_page' => -1,
 			'post_status'    => 'any',
 			'orderby'        => array(

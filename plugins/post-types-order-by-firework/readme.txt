@@ -7,4 +7,4 @@ Tested up to: 6.5
 Stable tag: 1.0.0
 License: GPLv2
 
-Sort posts and custom post type objects using a drag-and-drop sortable JavaScript AJAX interface or the default WordPress dashboard. This is the same plugin created by nsp code, now with all PHPCS warnings and issues removed for seamless use on VIP instances.
+This is the same plugin created by nsp code, now with all PHPCS warnings and issues removed for seamless use on VIP instances.

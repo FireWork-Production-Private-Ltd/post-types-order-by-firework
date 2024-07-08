@@ -6,7 +6,7 @@
  * Author: FireWork Production Private Limited
  * Author URI: https://github.com/FireWork-Production-Private-Ltd
  * Version: 1.0.0
- * Text Domain: post-types-order-by-firework-by-firework
+ * Text Domain: post-types-order-by-firework
  * Domain Path: /languages/
  *
  * @package post-types-order-by-firework

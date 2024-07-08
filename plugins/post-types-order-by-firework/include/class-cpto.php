@@ -277,7 +277,7 @@ class CPTO {
 		?>
 		<div class="error fade">
 			<p><strong>
-					<?php esc_html_e( 'Post Types Order must be configured. Please go to', 'post-types-order-by-firework' ); ?> <a
+					<?php esc_html_e( 'Post Types Order by FireWork must be configured. Please go to', 'post-types-order-by-firework' ); ?> <a
 						href="<?php echo esc_url( get_admin_url() ); ?>options-general.php?page=cpto-options">
 						<?php esc_html_e( 'Settings Page', 'post-types-order-by-firework' ); ?>
 					</a>
@@ -300,7 +300,7 @@ class CPTO {
 		$options_interface = new CptoOptionsInterface();
 		$options_interface->check_options_update();
 
-		$hook_id = add_options_page( 'Post Types Order', '<img class="menu_pto" src="' . CPTURL . '/images/menu-icon.png" alt="" height="20px" width="20px" style="object-fit: cover; vertical-align: middle;" /> Post Types Order', 'manage_options', 'cpto-options', array( $options_interface, 'plugin_options_interface' ) );
+		$hook_id = add_options_page( 'Post Types Order by FireWork', '<img class="menu_pto" src="' . CPTURL . '/images/menu-icon.png" alt="" height="20px" width="20px" style="object-fit: cover; vertical-align: middle;" /> Post Types Order by FireWork', 'manage_options', 'cpto-options', array( $options_interface, 'plugin_options_interface' ) );
 		add_action( 'admin_print_styles-' . $hook_id, array( $this, 'admin_options_print_styles' ) );
 	}
 

@@ -1,11 +1,12 @@
 # Post Types Order by FireWork
 
-**Contributors:** nsp-code, fireworkproductionprivateltd, up1512001  
+**Contributors:** nsp-code, [up1512001](https://profiles.wordpress.org/up1512001/)  <br/>
 **Donate link:** [Donate](http://www.nsp-code.com/donate.php)  
 **Tags:** post order, posts order, post sort, posts sort, post types order  
 **Requires at least:** 2.8  
 **Tested up to:** 6.5  
 **Stable tag:** 1.0.0  
+**ZIP Plugin File:** [Plugin ZIP](https://github.com/FireWork-Production-Private-Ltd/post-types-order/blob/main/post-types-order-by-firework.zip)
 
 ## Description
 
